@@ -1,0 +1,23 @@
+# Conda environment for BDTF, with the package versions used for the paper
+# (see ENVIRONMENT.md for the operating system, GPU and driver).
+#
+#   conda env create -f environment.yml
+#   conda activate bdtf
+#
+# gym and mujoco-py are needed for the D4RL tasks only; the D4RL tasks also
+# need the MuJoCo 2.1 binaries (see README).
+name: bdtf
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9.23
+  - numpy=1.26.4
+  - pyyaml=6.0.2
+  - h5py=3.14.0
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - torch==2.1.2+cu121
+      - gym==0.26.2
+      - cython==0.29.37
+      - mujoco-py==2.1.2.14
