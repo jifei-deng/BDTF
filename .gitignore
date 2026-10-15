@@ -1,0 +1,11 @@
+# D4RL datasets are downloaded separately (see README, Section 1)
+data/d4rl/
+*.qlearning.npz
+*.part
+
+# outputs
+results/
+my_environment/
+
+__pycache__/
+*.pyc
