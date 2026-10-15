@@ -1,0 +1,22 @@
+# D4RL walker2d-medium-replay-v2, evaluated on Gym MuJoCo Walker2d-v3.
+
+task:
+  kind: d4rl
+  env: walker2d
+  level: medium-replay
+
+agent:
+  n_critics: 4
+  bias_c: 3.0
+  eps_bar: 0.05
+  mmd_kernel: laplacian
+  mmd_sigma: 20.0
+
+train:
+  steps: 500000             # gradient steps
+  pretrain_steps: 40000     # behaviour-model (CVAE) pre-training
+  eval_every: 10000
+
+eval:
+  episodes: 10
+  horizon: 1000

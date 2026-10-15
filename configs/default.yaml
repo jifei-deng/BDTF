@@ -1,0 +1,34 @@
+# BDTF hyper-parameters shared by all tasks.  Task files (configs/<task>.yaml)
+# override some of them; train.py merges the two automatically.
+
+agent:
+  # networks
+  n_critics: 4              # ensemble size N
+  hidden: 256
+  bootstrap_p: 0.8          # per-head bootstrap ratio
+  # training
+  discount: 0.99
+  tau: 0.005
+  policy_freq: 2
+  actor_lr: 3.0e-4
+  critic_lr: 3.0e-4
+  vae_lr: 1.0e-3
+  policy_noise: 0.2
+  noise_clip: 0.5
+  actor_lr_schedule: cosine # annealed to 0 over train.steps
+  # bias-aware dual-support target fusion
+  w_mode: plugin
+  bias_c: 1.0               # overestimation of the policy-based backup, in head std
+  # ensemble regularisation
+  lambda_dis: 1.0
+  # support constraint
+  n_mmd_samples: 20
+  mmd_kernel: gaussian
+  mmd_sigma: 10.0
+  eps_bar: 0.05
+  delta_init: 1.0
+  delta_lr: 1.0e-3
+  delta_max: 100.0
+
+train:
+  batch_size: 256

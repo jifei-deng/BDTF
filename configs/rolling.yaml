@@ -1,0 +1,23 @@
+# Steel-strip flatness control (finishing mill), offline data logged under the
+# plant's incremental PI controller.  Simulator: rolling_env/.
+
+task:
+  kind: rolling
+  env:
+    noise_scale: 1.0        # calibrated process noise of the simulator
+    member: mean            # ensemble-mean dynamics
+    reset_mode: data        # episodes start from states of the dataset
+
+agent:
+  n_critics: 10
+  bias_c: 3.0
+  lambda_dis: 0.1           # (eps_bar 0.05, gaussian kernel: shared defaults)
+
+train:
+  steps: 30000              # gradient steps
+  pretrain_steps: 8000      # behaviour-model (CVAE) pre-training
+  eval_every: 1000
+
+eval:
+  episodes: 50              # 50 episodes of 100 steps per evaluation
+  horizon: 100
