@@ -1,0 +1,20 @@
+task:
+  kind: d4rl
+  env: walker2d
+  level: medium-replay
+
+agent:
+  n_critics: 4
+  bias_c: 3.0
+  eps_bar: 0.05
+  mmd_kernel: laplacian
+  mmd_sigma: 20.0
+
+train:
+  steps: 500000
+  pretrain_steps: 40000
+  eval_every: 10000
+
+eval:
+  episodes: 10
+  horizon: 1000

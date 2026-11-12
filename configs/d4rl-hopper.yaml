@@ -1,0 +1,20 @@
+task:
+  kind: d4rl
+  env: hopper
+  level: medium-replay
+
+agent:
+  n_critics: 4
+  eps_bar: 0.15
+  lambda_dis: 0.0
+  mmd_kernel: laplacian
+  mmd_sigma: 10.0
+
+train:
+  steps: 500000
+  pretrain_steps: 40000
+  eval_every: 10000
+
+eval:
+  episodes: 10
+  horizon: 1000
